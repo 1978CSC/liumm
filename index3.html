@@ -1,0 +1,114 @@
+<! DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+<style>
+#content{background:gray;width:400px;height:400px;margin:90px auto;border:5px solid yellow;position:relative}
+#content a{width:40px;height:40px;background:black;line-height:40px;text-align:center;color:white;text-decoration:none;font-size:30px;font-weight:bold;position:absolute;margin-top:180px;opacity:0.4}
+#content a:hover{width:40px;height:40px;background:black;line-height:40px;text-align:center;color:white;text-decoration:none;font-size:30px;font-weight:bold;position:absolute;margin-top:180px;opacity:0.8}
+#prev{left:10px }
+#next{right:10px}
+#span1{width:400px;height:30px;position:absolute;background:black;color:white;text-align:center;line-height:30px;opacity:0.7}
+#text{width:400px;height:30px;position:absolute;background:black;color:white;text-align:center;line-height:30px;opacity:0.7;font-weight:bold;bottom:0px;margin:0}
+#img1{width:400px;height:400px;position:absolute;}
+input{margin-top:40px;}
+#btn1{margin-left:550px;position:absolute}
+#btn2{position:absolute;margin-left:650px;}
+#text1{margin-top:60px;margin-left:500px ;position:absolute}
+</style>
+</head>
+<body>
+<input type="button" id="btn1" value="循环切换">
+<input type="button" id="btn2" value="顺序切换"><br/>
+<p id="text1">图片可以从最后一张跳转到第一张循环切换</p>
+
+<div id="content">
+<img id="img1" >
+<a id="prev"  href="javascript:"><</a>
+<a id="next"  href="javascript:">></a>
+<span id="span1">数量计算中···</span>
+<p id="text">图片加载中···</p>
+
+</div>
+<script>
+var oImg=document.getElementById("img1");
+var oPrev=document.getElementById("prev");
+var oNext=document.getElementById("next");
+var oSpan=document.getElementById("span1");
+var oText=document.getElementById("text");
+var oText1=document.getElementById("text1");
+var oBtn1=document.getElementById("btn1");
+var oBtn2=document.getElementById("btn2");
+
+var arrUrl=["http://p3.so.qhimg.com/bdr/_240_/t01a8a9f7a9124499e3.jpg","http://p4.so.qhimg.com/bdr/_240_/t01686082b5e2d50fd4.jpg","http://p0.so.qhimg.com/bdr/_240_/t0101d92f6d929fbb5a.jpg","http://p2.so.qhimg.com/bdr/_240_/t0162079917db25bc87.jpg"];
+var arrText=["陈思成大帅哥","黄轩哈哈","范逸臣嘿嘿","可爱小喵"];
+var num=0;
+var onOff=true
+
+oSpan.innerHTML=num+1+"/"+arrText.length;
+oImg.src=arrUrl[num];
+oText.innerHTML=arrText[num];
+		
+oNext.onclick=function(){
+		num++;
+		if(num==arrText.length){num=0;}
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+		};
+
+oPrev.onclick=function(){
+		num--;
+		if(num==-1){num=arrText.length-1};
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+			}
+oBtn1.onclick=function(){
+		oText1.innerHTML="图片可以从最后一张跳转到第一张循环切换";
+		oNext.onclick=function(){
+		num++;
+		if(num==arrText.length){num=0;}
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+		};
+
+oPrev.onclick=function(){
+		num--;
+		if(num==-1){num=arrText.length-1};
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+			}
+		
+}
+
+oBtn2.onclick=function(){
+		oText1.innerHTML="图片不可以从最后一张跳转到第一张循环切换";
+		
+		oNext.onclick=function(){
+		num++;
+		if(num==arrText.length){ num=arrText.length-1;alert("这已经是最后一张啦~~~");}
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+		};
+
+oPrev.onclick=function(){
+		num--;
+		if(num==-1){num=0;alert("这已经是第一张啦~~~")};
+		oSpan.innerHTML=num+1+"/"+arrText.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+			}
+}
+
+</script>
+
+</body>
+</html>
