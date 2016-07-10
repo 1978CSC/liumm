@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <input type="text" id="text" value=""/>
+ <select id="select">
+	<option value="山东">山东</option>
+	<option value="德州">德州</option>
+	<option value="陵县">陵县</option>
+  <input type="button" id="butt" value="按钮"/>
+    
+  <script>
+
+  window.onload=function(){
+	var bu=document.getElementById("butt")
+	var te=document.getElementById("text")
+	var se=document.getElementById("select")
+	bu.onclick=function(){
+		alert(te.value+'爱'+se.value)
+	}
+  }
+  </script>
+ </body>
+</html>
