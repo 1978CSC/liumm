@@ -1,0 +1,191 @@
+<!--
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	li{width: 80px;height: 102px;background: url(normal.png);list-style: none;float: left;margin-left: 30px;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aLi=document.getElementsByTagName('li');
+			//var onOff=true;      只能控制一组开关
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].onOff=true;    //控制多组开关
+				aLi[i].onclick=function(){
+					if(this.onOff){
+					this.style.background='url(active.png)';
+					this.onOff=false;}else{
+					this.style.background='url(normal.png)';
+					this.onOff=true;
+				      }
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var aBtn=document.getElementsByTagName('input');
+		var arr=['A','B','C','D'];
+
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].value=arr[0];   //这句
+			aBtn[i].num=1;		//这句
+			aBtn[i].onclick=function(){
+				this.value=arr[this.num]  
+				this.num++;
+				if(this.num===arr.length){
+					this.num=0;
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="">
+	<input type="button" name="" value="">
+	<input type="button" name="" value="">
+</body>
+</html>
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		//alert(1)
+			var aBtn=document.getElementsByTagName('input');
+			var aP=document.getElementsByTagName('p');
+			var arr1=['1','2','3'];
+			var arr2=['张三','李四','王五'];
+			//var onOff=true;
+			for(var i=0;i<aBtn.length;i++){
+				
+				
+				aBtn[i].onOff=true;
+				aBtn[i].index=i;
+				aBtn[i].value=arr1[i];
+				aP[i].innerHTML=arr1[i];
+				aBtn[i].onclick=function(){
+				if(this.onOff){//alert(1)
+				this.value=arr2[this.index];
+				aP[this.index].innerHTML=arr2[this.index];
+			this.onOff=false;}else{		//多组开关千万不要忘记给下面的onOff加this
+				this.value=arr1[this.index];
+				aP[this.index].innerHTML=arr1[this.index];
+			 	this.onOff=true;
+			 }
+				}
+
+			}
+		}
+	</script>
+		
+</head>
+<body>
+
+	<input type="button" name="" value=''>
+	<input type="button" name="" value=''>
+	<input type="button" name="" value=''>
+	<p></p>
+	<p></p>
+	<p></p>
+</body>
+</html> 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+ul{margin:0px;padding:0px;}
+li{list-style:none;}
+#pic{background:gray;width: 400px;height: 250px;position: relative;margin:50px auto;}
+#pic img{width: 400px;height: 250px}
+#pic ul{position: absolute;top: 0px;right: -50px}
+#pic  li{width: 50px;height: 40px;background:red;margin-bottom: 10px}
+#pic .active{background: green}
+#pic p{width:400px;margin:0px ;position: absolute;bottom: 0px;color:green;line-height: 30px;text-align: center}
+#pic span{width:400px;margin:0px ;position: absolute;top: 0px;color:green;line-height: 30px;text-align: center}
+
+</style>
+<script type="text/javascript">
+window.onload=function(){//alert(1)
+var oPic=document.getElementById('pic');
+var oSpan=oPic.getElementsByTagName('span')[0];
+var oP=oPic.getElementsByTagName('p')[0];
+var oImg=oPic.getElementsByTagName('img')[0];
+var oUl=oPic.getElementsByTagName('ul')[0];
+var aLi=oUl.getElementsByTagName('li');
+//var aLi=oUl.getElementsByTagName('li')[0];
+var arrUrl=['1.jpg','2.jpg','3.jpg','4.jpg'];
+var arrText=['陈思成大帅哥','黄轩大帅哥','陈思成超级帅','太喜欢你啦'];
+var num=0;
+
+
+oImg.src=arrUrl[num];
+oP.innerHTML=arrText[num];
+oSpan.innerHTML=1+num+'/'+arrUrl.length;
+
+
+	for(var i=0;i<arrUrl.length;i++){//alert(1)
+		oUl.innerHTML+='<li></li>';
+	};
+	aLi[num].className='active';
+	//var oldLi=null;
+	//oldLi=aLi[num];
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		
+		//oldLi.className='';
+		aLi[i].onclick=function(){
+		oImg.src=arrUrl[this.index];
+		oP.innerHTML=arrText[this.index];
+		oSpan.innerHTML=1+this.index+'/'+arrUrl.length;
+		for(var i=0;i<aLi.length;i++){aLi[i].className="";}
+		this.className='active';
+	 }
+	 
+	}
+}
+</script>
+</head>
+<body>
+<div id="pic">
+<span ></span>
+<p ></p>
+<img  src=""/ >
+<ul >
+
+</ul>
+</div>	
+</body>
+</html>
